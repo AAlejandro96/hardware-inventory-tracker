@@ -11,19 +11,19 @@
 // ============================================================
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
-    databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-    projectId: "YOUR_PROJECT",
-    storageBucket: "YOUR_PROJECT.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyB9zKe_vuoxcdIMJO3ZnPkASs3DBD91Y8g",
+    authDomain: "hardware-inventory-track-ff9f6.firebaseapp.com",
+    databaseURL: "https://hardware-inventory-track-ff9f6-default-rtdb.firebaseio.com",
+    projectId: "hardware-inventory-track-ff9f6",
+    storageBucket: "hardware-inventory-track-ff9f6.firebasestorage.app",
+    messagingSenderId: "1037380143341",
+    appId: "1:1037380143341:web:40f7cba9eba162a69b24e4"
 };
 
 // Initialize Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.14.0/firebase-app.js";
 import { getDatabase, ref, set, get, push, remove, update, onValue, query, orderByChild, limitToLast }
-    from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+    from "https://www.gstatic.com/firebasejs/12.14.0/firebase-database.js";
 
 const app = initializeApp(firebaseConfig);
 const db = getDatabase(app);
