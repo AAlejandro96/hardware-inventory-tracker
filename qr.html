@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code - Hardware Inventory Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/qrcode@1.5.3/build/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🔧 Hardware Inventory Tracker</div>
+        <div class="nav-links">
+            <a href="index.html">Inventory</a>
+            <a href="admin.html">Admin</a>
+            <a href="checkout.html">Take Items</a>
+            <a href="log.html">Activity Log</a>
+            <a href="qr.html" class="active">QR Code</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="qr-section">
+            <div class="card">
+                <h2>📱 Scan to Take Items</h2>
+                <p>Print or display this QR code near your hardware storage.<br>Users scan it to quickly log items they take.</p>
+                <div class="qr-code-container">
+                    <canvas id="qrCanvas"></canvas>
+                </div>
+                <p class="qr-url" id="checkoutUrl"></p>
+                <button class="btn btn-primary" onclick="window.print()" style="margin-top:1rem;">🖨️ Print QR Code</button>
+            </div>
+        </div>
+    </main>
+
+    <style>
+        @media print {
+            .navbar, .btn { display: none !important; }
+            body { background: white; }
+            .card { border: none; box-shadow: none; background: white; }
+            .qr-section h2 { color: #333; }
+            .qr-section p { color: #666; }
+            .qr-url { color: #333; }
+        }
+    </style>
+
+    <script>
+        // Auto-detect the checkout URL based on current page location
+        const baseUrl = window.location.href.replace('qr.html', 'checkout.html');
+        document.getElementById('checkoutUrl').textContent = baseUrl;
+
+        // Generate QR Code
+        QRCode.toCanvas(document.getElementById('qrCanvas'), baseUrl, {
+            width: 250,
+            margin: 2,
+            color: { dark: '#1a1a2e', light: '#ffffff' }
+        }, function(error) {
+            if (error) console.error(error);
+        });
+    </script>
+</body>
+</html>
