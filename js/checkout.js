@@ -14,17 +14,16 @@ document.getElementById('aliasInput').addEventListener('keypress', (e) => {
 
 function authenticate() {
     const alias = document.getElementById('aliasInput').value.trim();
-    if (!alias) return;
-
-    if (isAuthorized(alias)) {
-        currentUser = alias;
-        document.getElementById('authGate').classList.add('hidden');
-        document.getElementById('checkoutContent').classList.remove('hidden');
-        document.getElementById('userBadge').textContent = `👤 ${alias}`;
-        initCheckout();
-    } else {
+    if (!alias) {
         document.getElementById('authError').classList.remove('hidden');
+        return;
     }
+
+    currentUser = alias;
+    document.getElementById('authGate').classList.add('hidden');
+    document.getElementById('checkoutContent').classList.remove('hidden');
+    document.getElementById('userBadge').textContent = `👤 ${alias}`;
+    initCheckout();
 }
 
 function initCheckout() {

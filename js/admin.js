@@ -173,6 +173,40 @@ async function logAction(action, itemName, quantity) {
     });
 }
 
+function exportToExcel() {
+    if (allItems.length === 0) {
+        alert('No inventory data to export.');
+        return;
+    }
+
+    const sorted = [...allItems].sort((a, b) => a.name.localeCompare(b.name));
+
+    const data = sorted.map(item => ({
+        'Item Name': item.name,
+        'Category': item.category,
+        'Location': item.location,
+        'Quantity': item.quantity,
+        'Status': item.quantity === 0 ? 'Out of Stock' : item.quantity <= 5 ? 'Low Stock' : 'In Stock'
+    }));
+
+    const ws = XLSX.utils.json_to_sheet(data);
+
+    // Set column widths
+    ws['!cols'] = [
+        { wch: 45 }, // Item Name
+        { wch: 20 }, // Category
+        { wch: 15 }, // Location
+        { wch: 10 }, // Quantity
+        { wch: 15 }  // Status
+    ];
+
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Inventory');
+
+    const today = new Date().toISOString().split('T')[0];
+    XLSX.writeFile(wb, `Hardware_Hub_Inventory_${today}.xlsx`);
+}
+
 function escapeHtml(text) {
     const div = document.createElement('div');
     div.textContent = text;

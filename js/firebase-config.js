@@ -33,10 +33,11 @@ const db = getDatabase(app);
 // ============================================================
 // Add or remove aliases as needed. Case-insensitive matching is used.
 const AUTHORIZED_ALIASES = [
-    "admin",
-    "aalejandro",
-    "jsmith",
-    "mgarcia"
+    "stplatis",
+    "ngamache",
+    "katikins",
+    "stacyf",
+    "aalejandro"
 ];
 
 // ============================================================
