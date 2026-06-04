@@ -213,6 +213,13 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// Expose functions for inline onclick handlers
+window.openEditModal = openEditModal;
+window.closeEditModal = closeEditModal;
+window.adjustQty = adjustQty;
+window.deleteItem = deleteItem;
+window.exportToExcel = exportToExcel;
+
 // Make functions globally accessible for inline onclick handlers
 window.openEditModal = openEditModal;
 window.closeEditModal = closeEditModal;

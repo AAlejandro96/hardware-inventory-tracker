@@ -183,6 +183,11 @@ function escapeHtml(text) {
     return div.innerHTML;
 }
 
+// Expose functions for inline onclick handlers
+window.addToCart = addToCart;
+window.removeFromCart = removeFromCart;
+window.resetCheckout = resetCheckout;
+
 // Make functions globally accessible
 window.addToCart = addToCart;
 window.removeFromCart = removeFromCart;
