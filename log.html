@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity Log - Hardware Inventory Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🔧 Hardware Inventory Tracker</div>
+        <div class="nav-links">
+            <a href="index.html">Inventory</a>
+            <a href="admin.html">Admin</a>
+            <a href="checkout.html">Take Items</a>
+            <a href="log.html" class="active">Activity Log</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Activity Log</h1>
+            <div class="filters">
+                <input type="text" id="logSearch" placeholder="Search by alias or item..." class="search-input">
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Date & Time</th>
+                        <th>User</th>
+                        <th>Action</th>
+                        <th>Item</th>
+                        <th>Quantity</th>
+                    </tr>
+                </thead>
+                <tbody id="logBody">
+                    <tr>
+                        <td colspan="5" class="loading">Loading activity log...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/log.js"></script>
+</body>
+</html>

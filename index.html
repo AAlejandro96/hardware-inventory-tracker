@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hardware Inventory Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🔧 Hardware Inventory Tracker</div>
+        <div class="nav-links">
+            <a href="index.html" class="active">Inventory</a>
+            <a href="admin.html">Admin</a>
+            <a href="checkout.html">Take Items</a>
+            <a href="log.html">Activity Log</a>
+        </div>
+    </nav>
+
+    <main class="container">
+        <div class="page-header">
+            <h1>Current Inventory</h1>
+            <div class="filters">
+                <input type="text" id="searchInput" placeholder="Search items..." class="search-input">
+                <select id="categoryFilter" class="filter-select">
+                    <option value="">All Categories</option>
+                </select>
+                <select id="locationFilter" class="filter-select">
+                    <option value="">All Locations</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="inventory-stats">
+            <div class="stat-card">
+                <span class="stat-number" id="totalItems">0</span>
+                <span class="stat-label">Total Items</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="totalQuantity">0</span>
+                <span class="stat-label">Total Quantity</span>
+            </div>
+            <div class="stat-card">
+                <span class="stat-number" id="lowStock">0</span>
+                <span class="stat-label">Low Stock (&le;5)</span>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="inventory-table">
+                <thead>
+                    <tr>
+                        <th>Item Name</th>
+                        <th>Category</th>
+                        <th>Location</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="inventoryBody">
+                    <tr>
+                        <td colspan="5" class="loading">Loading inventory...</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/inventory.js"></script>
+</body>
+</html>

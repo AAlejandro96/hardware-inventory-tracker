@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Take Items - Hardware Inventory Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🔧 Hardware Inventory Tracker</div>
+        <div class="nav-links">
+            <a href="index.html">Inventory</a>
+            <a href="admin.html">Admin</a>
+            <a href="checkout.html" class="active">Take Items</a>
+            <a href="log.html">Activity Log</a>
+        </div>
+    </nav>
+
+    <!-- Auth Gate -->
+    <div id="authGate" class="container">
+        <div class="auth-card">
+            <h2>Who are you?</h2>
+            <p>Enter your alias to check out items</p>
+            <input type="text" id="aliasInput" placeholder="Your alias" class="auth-input">
+            <button id="authBtn" class="btn btn-primary">Continue</button>
+            <p id="authError" class="error-text hidden">Alias not authorized.</p>
+        </div>
+    </div>
+
+    <!-- Checkout Content -->
+    <main id="checkoutContent" class="container hidden">
+        <div class="page-header">
+            <h1>Take Items</h1>
+            <span class="user-badge" id="userBadge"></span>
+        </div>
+
+        <div class="checkout-section">
+            <div class="card">
+                <h2>Select Items to Take</h2>
+                <div class="checkout-search">
+                    <input type="text" id="itemSearch" placeholder="Search for an item..." class="search-input full-width">
+                </div>
+                <div id="itemList" class="item-list">
+                    <p class="loading">Loading items...</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Your Cart</h2>
+                <div id="cart" class="cart-items">
+                    <p class="empty-cart">No items selected yet.</p>
+                </div>
+                <button id="checkoutBtn" class="btn btn-primary btn-large hidden">Confirm Checkout</button>
+            </div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-card hidden">
+            <div class="success-icon">✓</div>
+            <h2>Items Checked Out!</h2>
+            <p>Inventory has been updated.</p>
+            <button class="btn btn-primary" onclick="resetCheckout()">Take More Items</button>
+        </div>
+    </main>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/checkout.js"></script>
+</body>
+</html>

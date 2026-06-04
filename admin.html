@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Hardware Inventory Tracker</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-brand">🔧 Hardware Inventory Tracker</div>
+        <div class="nav-links">
+            <a href="index.html">Inventory</a>
+            <a href="admin.html" class="active">Admin</a>
+            <a href="checkout.html">Take Items</a>
+            <a href="log.html">Activity Log</a>
+        </div>
+    </nav>
+
+    <!-- Auth Gate -->
+    <div id="authGate" class="container">
+        <div class="auth-card">
+            <h2>Admin Access</h2>
+            <p>Enter your alias to continue</p>
+            <input type="text" id="aliasInput" placeholder="Your alias" class="auth-input">
+            <button id="authBtn" class="btn btn-primary">Enter</button>
+            <p id="authError" class="error-text hidden">Alias not authorized.</p>
+        </div>
+    </div>
+
+    <!-- Admin Content (hidden until authenticated) -->
+    <main id="adminContent" class="container hidden">
+        <div class="page-header">
+            <h1>Inventory Management</h1>
+            <span class="user-badge" id="userBadge"></span>
+        </div>
+
+        <!-- Add Item Form -->
+        <div class="card">
+            <h2>Add New Item</h2>
+            <form id="addItemForm" class="form-grid">
+                <div class="form-group">
+                    <label for="itemName">Item Name *</label>
+                    <input type="text" id="itemName" required placeholder="e.g., USB-C Cable">
+                </div>
+                <div class="form-group">
+                    <label for="itemCategory">Category *</label>
+                    <input type="text" id="itemCategory" required placeholder="e.g., Cables" list="categoryList">
+                    <datalist id="categoryList"></datalist>
+                </div>
+                <div class="form-group">
+                    <label for="itemLocation">Location *</label>
+                    <input type="text" id="itemLocation" required placeholder="e.g., Shelf A3" list="locationList">
+                    <datalist id="locationList"></datalist>
+                </div>
+                <div class="form-group">
+                    <label for="itemQuantity">Quantity *</label>
+                    <input type="number" id="itemQuantity" required min="0" value="1">
+                </div>
+                <button type="submit" class="btn btn-primary">Add Item</button>
+            </form>
+        </div>
+
+        <!-- Current Inventory with Actions -->
+        <div class="card">
+            <h2>Manage Inventory</h2>
+            <div class="table-container">
+                <table class="inventory-table">
+                    <thead>
+                        <tr>
+                            <th>Item Name</th>
+                            <th>Category</th>
+                            <th>Location</th>
+                            <th>Quantity</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminInventoryBody">
+                        <tr>
+                            <td colspan="5" class="loading">Loading inventory...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Edit Modal -->
+    <div id="editModal" class="modal hidden">
+        <div class="modal-content">
+            <h2>Edit Item</h2>
+            <form id="editItemForm">
+                <input type="hidden" id="editItemId">
+                <div class="form-group">
+                    <label for="editName">Item Name</label>
+                    <input type="text" id="editName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editCategory">Category</label>
+                    <input type="text" id="editCategory" required>
+                </div>
+                <div class="form-group">
+                    <label for="editLocation">Location</label>
+                    <input type="text" id="editLocation" required>
+                </div>
+                <div class="form-group">
+                    <label for="editQuantity">Quantity</label>
+                    <input type="number" id="editQuantity" required min="0">
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                    <button type="button" class="btn btn-secondary" onclick="closeEditModal()">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/firebase-config.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>
